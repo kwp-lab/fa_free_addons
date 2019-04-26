@@ -23,7 +23,7 @@
 2. 请先注册Facebook帐号，并开通主页（page）。
 3. 在Messenger的设置页面中，将您网站的域名添加至白名单。
 Facebook服务器会验证请求源的域名，如果不在白名单中，则无法显示messenger对话组件。同时，你的域名必须是HTTPS的。
-![白名单设置](https://cdn.fastadmin.net/uploads/20190423/73423f5db8791bc2328bae3569c26b24.png)
+![白名单设置](https://github.com/KelvinPoon/fa_free_addons/blob/master/fbcustomerchat/imgs/%E6%88%AA%E5%9B%BE4.png)
 
 
 > 在开发调试阶段，可使用代理隧道软件，推荐Ngrok。一款可以让你在本地开发调试此插件的免费工具。
