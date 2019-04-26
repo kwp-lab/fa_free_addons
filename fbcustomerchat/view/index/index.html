@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>示例 - Facebook Messenger顾客聊天插件</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__CDN__/assets/css/bootstrap.min.css">
+    <style media="screen">
+        body {
+            background-color: #f5f5f5;
+            font-size: 14px;
+        }
+
+        .container-main {
+            background-color: #fff;
+            padding-bottom: 40px;
+            min-height: 1000px;
+        }
+
+        .mt-20 {
+            margin-top: 20px
+        }
+
+        .mb-20 {
+            margin-bottom: 20px
+        }
+
+        .px-10 {
+            padding-left: 10px;
+            padding-right: 10px
+        }
+
+        .py-10 {
+            padding-top: 10px;
+            padding-bottom: 10px
+        }
+
+        .font-18 {
+            font-size: 18px;
+        }
+
+        dl>dt {
+            margin-top: 1rem;
+        }
+
+        pre {
+            min-height: 100px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container container-main">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="margin-top:40px">欢迎使用Facebook Messenger顾客聊天插件</h1>
+                <p class="text-muted">此页面仅用于聊天插件效果演示</p>
+                <hr>
+            </div>
+            <div class="col-xs-12">
+                {empty name="addon_config.page_id"}
+                <div class="bg-danger text-danger px-10 py-10 font-18 mb-20">当前还没设置Page ID,请前往后台进行插件配置！</div>
+                {/empty}
+            </div>
+            <div class="col-xs-12">
+                <h3 class="text-success">快速配置说明</h3>
+                <dl>
+                    <dt>第一步：</dt>
+                    <dd>在FA后台中填写你的Facebook Page ID。</dd>
+                    <dt>第二步：</dt>
+                    <dd>确保浏览器可正常访问<a class="text-success" href="https://www.facebook.com" target="_blank">www.facebook.com</a>。</dd>
+                    <dt>第三步：</dt>
+                    <dd>访问<a class="text-success" href="https://www.facebook.com" target="_blank">www.facebook.com</a>，并在公共主页的设置菜单中点击“Messenger平台”，将你当前的网站域名添加至白名单（请确保你的域名可通过https方式访问）。</dd>
+                    <dd>刷新此页面，如果右下角出现了Messenger插件图标，表示已经大功告成。</dd>
+                </dl>
+
+                <h3 class="text-success">常见问题</h3>
+                <dt>按快速配置说明操作后，仍然看不到右下角的Messenger插件图标？</dt>
+                <dd>1.请打开浏览器调试工具（F12），如果在console见到下方信息，表示当前网站域名仍然未添加至白名单。</dd>
+                <pre>Refused to display 'https://www.facebook.com/v3.2/plugins/customerchat.php?app_id=&attribution=setup_tool...' in a frame because an ancestor violates the following Content Security Policy directive: "frame-ancestors https://www.facebook.com".</pre>
+
+                <dd>2.如果你使用Firefox桌面浏览器（版本 63 及以上），请确认“内容拦截”功能是否屏蔽了插件（在搜索栏中点击灰色盾牌图标）。</dd>
+            </div>
+        </div>
+
+    </div>
+    {:hook('fbchat_init')}
+</body>
+
+</html>
