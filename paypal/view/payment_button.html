@@ -1,0 +1,55 @@
+<div class="pp_standard_form">
+    <form action="{$action}" method="post">
+        <input type="hidden" name="charset" value="utf-8" />
+        <input type="hidden" name="cmd" value="_cart" />
+        <input type="hidden" name="upload" value="1" />
+        <input type="hidden" name="business" value="{$business}" />
+
+        <!-- Payment transaction variables -->
+        <input type="hidden" name="currency_code" value="{$currency_code}" />
+        {notempty name="$invoice"}<input type="hidden" name="invoice" value="{$invoice}" />{/notempty}
+        {notempty name="$custom"}<input type="hidden" name="custom" value="{$custom}" />{/notempty}
+        <input type="hidden" name="address_override" value="0" />
+
+        <!-- Auto-fill PayPal checkout page variables -->
+        {notempty name="$email"}
+        <input type="hidden" name="first_name" value="{$first_name}" />
+        <input type="hidden" name="last_name" value="{$last_name}" />
+        <input type="hidden" name="address1" value="{$address1}" />
+        <input type="hidden" name="address2" value="{$address2}" />
+        <input type="hidden" name="city" value="{$city}" />
+        <input type="hidden" name="zip" value="{$zip}" />
+        <input type="hidden" name="country" value="{$country}" />
+        <input type="hidden" name="email" value="{$email}" />
+        {/notempty}
+
+        <!-- Shopping cart variables -->
+        <input type="hidden" name="paymentaction" value="{$paymentaction}" />
+        {notempty name="$handling_cart"}<input type="hidden" name="handling_cart" value="{$handling_cart}">{/notempty}
+
+        {volist name="products" id="product"}
+        <input type="hidden" name="item_name_{$i}" value="{$product['item_name']}" />
+        <input type="hidden" name="amount_{$i}" value="{$product['amount']}" />
+        <input type="hidden" name="quantity_{$i}" value="{$product['quantity']}" />
+        {/volist}
+
+
+
+        <!-- PayPal checkout page variables -->
+        {notempty name="$lc"}<input type="hidden" name="lc" value="{$lc}" />{/notempty}
+        <input type="hidden" name="rm" value="2" />
+        {notempty name="$return"}<input type="hidden" name="return" value="{$return}" />{/notempty}
+        {notempty name="$cancel_return"}<input type="hidden" name="cancel_return" value="{$cancel_return}" />{/notempty}
+        <input type="hidden" name="no_shipping" value="1" />
+        {notempty name="$image_url"}<input type="hidden" name="image_url" value="{$image_url}">{/notempty}
+
+        <input type="hidden" name="no_note" value="1" />
+
+        <!-- SPECIAL PAYPAL FEATURES -->
+        {notempty name="$notify_url"}<input type="hidden" name="notify_url" value="{$notify_url}" />{/notempty}
+        <input type="hidden" name="bn" value="Deegou_BuyNow_WPS_CN" />
+
+        <button type="submit" class="btn btn-danger btn-lg">{$btn_checkout}<span class="pl-2 fa fa-external-link"></span></button>
+
+    </form>
+</div>

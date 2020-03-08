@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PayPal按钮示例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__CDN__/assets/css/bootstrap.min.css">
+    <style media="screen">
+        body{
+            font-size: 16px;
+            background-color: #f5f5f5;
+        }
+        dl>dt {
+            margin-top: 1rem;
+        }
+        dd{
+            color: #696969
+        }
+        .alert-danger{
+            font-size: 18px;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container container-main">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="margin-top:40px">欢迎使用“PayPal按钮”支付插件</h1>
+                <p class="text-muted">此页面仅用于插件的效果演示</p>
+                <hr>
+            </div>
+            <div class="col-xs-12">
+                {empty name="addon_config.email"}
+                <div class="alert-danger bg-danger text-danger">当前还没设置PayPal收款账号,请前往后台进行插件配置！</div>
+                {/empty}
+            </div>
+            <div class="col-xs-6">
+                <form id="form-custom-params">
+                    <div id="legend" style="margin-top:20px;">
+                        <legend class="">待提交PayPal的参数</legend>
+                        <p class="text-danger">*仅显示部分参数，全部参数请查看代码</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>商品1: 名称</label>
+                        <input type="text" class="form-control" data-name="item_name_1" value="测试费">
+                    </div>
+                    <div class="form-group">
+                        <label>商品1: 数量</label>
+                        <input type="number" class="form-control" data-name="quantity_1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label>商品1: 价格(US Dollar)</label>
+                        <input type="number" class="form-control" data-name="amount_1" value="0.02">
+                    </div>
+                    <div class="form-group">
+                        <label>商品2: 名称</label>
+                        <input type="text" class="form-control" data-name="item_name_2" value="开发费">
+                    </div>
+                    <div class="form-group">
+                        <label>商品2: 数量</label>
+                        <input type="number" class="form-control" data-name="quantity_2" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label>商品2: 价格(US Dollar)</label>
+                        <input type="number" class="form-control" data-name="amount_2" value="1.02">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-lg" id="btn-update">Step1: 更新参数至PayPal隐藏表单</button>
+                    </div>
+                </form>
+                {notempty name="addon_config.email"}
+                {:hook('pp_button_init', $ppForm)}
+                {else/}
+                <button type="submit" class="btn btn-danger btn-lg disabled">{$ppForm.btn_checkout}<span class="pl-2 fa fa-external-link" disabled></span></button>
+                {/notempty}
+            </div>
+            <div class="col-xs-6">
+                <div>
+                    <h3 class="text-success">示例说明</h3>
+                    <dl>
+                        <dt>基于PayPal Payments Standard，定制化html form (Buy Now Button)</dt>
+                        <dd>API文档：<a class="text-success" href="https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/" target="_blank">《HTML Variables for PayPal Payments Standard》</a></dd>
+                        <dt>支持多商品：</dt>
+                        <dd>可以一次性提交多个商品至PayPal购物车。</dd>
+                        <dt>默认使用沙盒（Sanbox）：</dt>
+                        <dd>在后台插件配置中修改配置后，刷新此页体验其他功能。</dd>
+                        <dt>步骤说明：</dt>
+                        <dd>1.在左侧的输入框内修改数据</dd>
+                        <dd>2.点击按钮“Step1: 更新参数至PayPal隐藏表单”。</dd>
+                        <dd>3.点击按钮“Step2: 前往PayPal支付”。</dd>
+                        <dd>4.国内访问PayPal站点不太稳定，如果出现加载时间过长，请考虑使用VPN。</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__CDN__/assets/libs/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function(){
+
+            $("#btn-update").click(function(){
+                var field_name = field_val = '';
+
+                //清除旧的数据
+                $("input[name^='item_name_'], input[name^='amount_'], input[name^='quantity_']", ".pp_standard_form").remove();
+
+
+                $("#form-custom-params input[data-name]").each(function(index, item){
+                    field_name = $(item).attr("data-name");
+                    field_val = $(item).val();
+                    $(".pp_standard_form form").append("<input type='hidden' name='" + field_name + "' value='" + field_val + "'>")
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
