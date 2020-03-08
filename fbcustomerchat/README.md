@@ -1,5 +1,7 @@
 # Facebook Messenger顾客聊天插件
 
+![Preview of Addon Thumb](https://github.com/KelvinPoon/fa_free_addons/blob/master/fbcustomerchat/imgs/%E6%88%AA%E5%9B%BE6.png)
+
 ### 功能介绍
 >该顾客聊天插件会自动加载客户与公司最近的聊天记录，无论是在 messenger.com 上，还是在 Messenger 应用中，又或是在您网站的顾客聊天插件中，只要是该客户最近与您公司之间的互动，都会显示出来。这有助于为客户打造不间断沟通的体验，同时确保即使在客户离开您的网页之后，您也能继续与他们之间的对话。集成这一插件后，您无需再为了跟进而四处捕捉客户的信息，只需在 Messenger 中打开与对方的对话即可。
   
@@ -21,7 +23,7 @@
 2. 请先注册Facebook帐号，并开通主页（page）。
 3. 在Messenger的设置页面中，将您网站的域名添加至白名单。
 Facebook服务器会验证请求源的域名，如果不在白名单中，则无法显示messenger对话组件。同时，你的域名必须是HTTPS的。
-![白名单设置](https://cdn.fastadmin.net/uploads/20190423/73423f5db8791bc2328bae3569c26b24.png)
+![白名单设置](https://github.com/KelvinPoon/fa_free_addons/blob/master/fbcustomerchat/imgs/%E6%88%AA%E5%9B%BE4.png)
 
 
 > 在开发调试阶段，可使用代理隧道软件，推荐Ngrok。一款可以让你在本地开发调试此插件的免费工具。
